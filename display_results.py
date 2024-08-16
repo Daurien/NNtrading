@@ -10,11 +10,11 @@ warnings.filterwarnings("ignore", category=FutureWarning, module="yfinance")
 # Set up symbol and interval
 symbol = 'BTC-USD'
 interval = '5m'
-period = '7d'  # Last 7 days to get enough 5-minute intervals
+period = '5d'  # Last 7 days to get enough 5-minute intervals
 
 # Pull some data using yfinance
 data = yf.download(tickers=symbol, interval=interval, period=period)
-
+print(data)
 # Format it in pandas
 data = data.reset_index()  # Reset index to move 'Date' into a column
 data = data.rename(columns={'Datetime': 'time', 'Open': 'open',
@@ -51,4 +51,4 @@ print(data)
 fplt.autoviewrestore()
 
 # Show the plot
-# fplt.show()
+fplt.show()
